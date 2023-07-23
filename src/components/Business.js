@@ -15,7 +15,7 @@ const businessPlaceholder = {
 
 /*display an image, name, address, city, state, zipcode, category, rating, and review count*/
 
-function Business() {
+function Business(business) {
     return (
         <div>
             <img src={businessPlaceholder.imageSrc}
