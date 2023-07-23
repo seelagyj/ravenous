@@ -12,3 +12,4 @@ function BusinessList() {
     });
     return businessesDisplay;
 }
+export default BusinessList;
