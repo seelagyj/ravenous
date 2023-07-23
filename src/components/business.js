@@ -18,7 +18,8 @@ const businessPlaceholder = {
 function Business() {
     return (
         <div>
-            <img src={businessPlaceholder.imageSrc}/>
+            <img src={businessPlaceholder.imageSrc}
+            alt={businessPlaceholder.name}/>
             <h1>
                 {businessPlaceholder.name}
             </h1>
@@ -37,3 +38,4 @@ function Business() {
         </div>
     )
 }
+export default Business;
