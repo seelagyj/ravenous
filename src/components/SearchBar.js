@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import searchYelp from '../utils/yelpAPI';
 
 /*The search bar should contain two inputs, one for the user’s search terms and the selected location. 
 Don’t forget a search button as well.
@@ -8,7 +9,7 @@ This functionality will be fully incorporated in a later part of the project, bu
 on building the buttons and the structure needed to communicate with the Yelp API.*/
 
 
-function SearchBar() {
+function SearchBar(props) {
     const [search, setSearch] = useState('');
     const [location, setLocation] = useState('');
     const [sort, setSort] = useState("best_match");
@@ -28,10 +29,10 @@ function SearchBar() {
     }
     const clickHandler = (event) => {
         setSort(event.target.value);
-
     }
-    const submitHandler = () => {
-        alert("Searching Yelp with " + search + " in " + location + ", sorted by " + sort);
+    const submitHandler = (event) => {
+        event.preventDefault();
+        props.getBusinesses(search, location, sort);
     }
     
     return (

@@ -18,22 +18,22 @@ const businessPlaceholder = {
 function Business(props) {
     return (
         <div>
-            <img src={props.business.imageSrc}
+            <img src={props.business.image_url}
             alt={props.business.name}/>
             <h1>
                 {props.business.name}
             </h1>
             <p>
-                {props.business.address}
+                {props.business.location.address1}
             </p>
             <p>
-                {props.business.city + ', ' + props.business.state + ' ' + props.business.zipcode}
+                {props.business.location.city + ', ' + props.business.location.state + ' ' + props.business.location.zip_code}
             </p>
             <h4>
-                {props.business.category}
+                {props.business.categories.title}
             </h4>
             <p>
-                {props.business.rating + ' (' + props.business.reviewCount + ')'}
+                {'Average Rating: ' + props.business.rating + ' (' + props.business.review_count + ' ratings)'}
             </p>
         </div>
     )

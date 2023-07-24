@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar'
 import BusinessList from './components/BusinessList'
+import searchYelp from './utils/yelpAPI'
 
 //array of business objects
-const businessArray = [{
+//const businessArray = 
+/*[
+  {
   imageSrc: 'https://yellowrocketconcepts.cardfoundry.com/merch/yellowrocketconcepts/images/banner.jpg',
   name: 'Zaza',
   address: '1212 Something Way',
@@ -24,14 +27,20 @@ const businessArray = [{
   category: 'Czech, German',
   rating: 4.7,
   reviewCount: 52
-}];
+}];*/
 
 function App() {
+  const [businesses, setBusinesses] = useState([]);
+  const getBusinesses = async (search, location, sort) => {
+    const results = await searchYelp(search, location, sort);
+    setBusinesses(results);
+  };
+
   return (
     <div className="App">
-      <SearchBar/>
+      <SearchBar getBusinesses={getBusinesses}/>
       <br></br>
-      <BusinessList businessArray={businessArray}/>
+      <BusinessList businesses={businesses}/>
     </div>
   );
 }
