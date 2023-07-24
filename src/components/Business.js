@@ -15,25 +15,25 @@ const businessPlaceholder = {
 
 /*display an image, name, address, city, state, zipcode, category, rating, and review count*/
 
-function Business(business) {
+function Business(props) {
     return (
         <div>
-            <img src={businessPlaceholder.imageSrc}
-            alt={businessPlaceholder.name}/>
+            <img src={props.business.imageSrc}
+            alt={props.business.name}/>
             <h1>
-                {businessPlaceholder.name}
+                {props.business.name}
             </h1>
             <p>
-                {businessPlaceholder.address}
+                {props.business.address}
             </p>
             <p>
-                {businessPlaceholder.city + ', ' + businessPlaceholder.state + ' ' + businessPlaceholder.zipcode}
+                {props.business.city + ', ' + props.business.state + ' ' + props.business.zipcode}
             </p>
             <h4>
-                {businessPlaceholder.category}
+                {props.business.category}
             </h4>
             <p>
-                {businessPlaceholder.rating + ' (' + businessPlaceholder.reviewCount + ')'}
+                {props.business.rating + ' (' + props.business.reviewCount + ')'}
             </p>
         </div>
     )

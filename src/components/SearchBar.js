@@ -1,4 +1,4 @@
-import Reach from 'react';
+import React, {useState} from 'react';
 
 /*The search bar should contain two inputs, one for the user’s search terms and the selected location. 
 Don’t forget a search button as well.
@@ -9,25 +9,46 @@ on building the buttons and the structure needed to communicate with the Yelp AP
 
 
 function SearchBar() {
+    const [search, setSearch] = useState('');
+    const [location, setLocation] = useState('');
+    const [sort, setSort] = useState("best_match");
+
+
     const sortOptions = {
         bestMatch: "best_match",
         highestRated: "rating",
         mostReviewed: "review_count"
     };
     const sortArray = Object.keys(sortOptions);
-    const sortList = sortArray.map(option => {
-        <option value={sortOptions[option]}>{option}</option>
-    });    
+    const searchChangeHandler = (event) => {
+        setSearch(event.target.value);
+    }
+    const locationChangeHandler = (event) => {
+        setLocation(event.target.value);
+    }
+    const clickHandler = (event) => {
+        setSort(event.target.value);
+
+    }
+    const submitHandler = () => {
+        alert("Searching Yelp with " + search + " in " + location + ", sorted by " + sort);
+    }
+    
     return (
-    <form>
+    <div>
+            <br></br>
+            <br></br>
+    <form onSubmit={submitHandler}>
         <input type="text"
-            name="term"></input>
+            name="term" value={search} onChange={searchChangeHandler}></input>
         <input type="text"
-            name="location"></input>
+            name="location" value={location} onChange={locationChangeHandler}></input>
         <input type="submit" value="Search"></input>
-        <select name="sort_by">
-            {sortList}
+        <select name="sort_by" onClick={clickHandler}>
+            {sortArray.map(key => <option value={sortOptions[key]} key={key}>{key}</option>)}
         </select>
     </form>
+    </div>
     )
 }
+export default SearchBar;
